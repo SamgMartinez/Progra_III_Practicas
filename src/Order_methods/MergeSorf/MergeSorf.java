@@ -7,19 +7,19 @@ public class MergeSorf {
         if (init == end){
             return list;
         }
-        int mid = (init + end)/2;
+        int mid = (init + end)/2; //O(1)
         if (init < end){
             mergeSorf(list, init, mid);
             mergeSorf(list, mid + 1, end);
         }
-        merge(list,init,end,mid);
+        merge(list,init,end,mid); //O(n)
         return list;
     }
 
     private static int[] merge(int[] list, int init, int end, int mid){
-        int index1 = init, index2 = mid + 1;
-        int listaux[]  = new int[list.length];
-        for (int i = init ; i <= end; i++){
+        int index1 = init, index2 = mid + 1; //O(1)
+        int listaux[]  = new int[list.length];//O(1)
+        for (int i = init ; i <= end; i++){//O(n)
             if (index1 > mid) {
                 listaux[i] = list[index2];
                 index2++;
@@ -34,7 +34,7 @@ public class MergeSorf {
                 index2++;
             }
         }
-        for (int i = init ; i <= end; i++){
+        for (int i = init ; i <= end; i++){//O(n)
             list[i] = listaux[i];
         }
 

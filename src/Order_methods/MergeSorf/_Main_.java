@@ -1,35 +1,15 @@
 package Order_methods.MergeSorf;
-import java.util.Random;
-
+import Order_methods.auxFunction;
+import Order_methods.Crono;
 public class _Main_ {
-    private static int[] crearLista(int cantidad){
-        int lista[] = new int[cantidad];
-        Random random = new Random();
-
-        for(int i=0; i<cantidad;i++){
-            int randomInt = random.nextInt(100);
-            lista[i] = randomInt;
-        }
-        return lista;
-    }
-    private static void mostrarLista(int[] list){
-        for(int i = 0; i < list.length; i++){
-            System.out.print("["+list[i]+"]");
-        }
-        System.out.print("\n");
-    }
 
     public static void main(String[] args) {
-        long startTime = System.currentTimeMillis();
-        int vectorDesordenado[] = crearLista(500000);
+        Crono crono = new Crono();
+        int vectorDesordenado[] = auxFunction.crearLista(100000);
         //mostrarLista(vectorDesordenado);
         int vectorOrdenador[] = MergeSorf.mergeSorf(vectorDesordenado, 0, vectorDesordenado.length - 1);
         //mostrarLista(vectorOrdenador);
-        //  Ini Area para medir el tiempo   //
-        long endTime = System.currentTimeMillis();
-        double elapsedTimeInSeconds = (endTime - startTime) / 1000.0;
-        System.out.println("Execution time: " + elapsedTimeInSeconds + " seconds");
-        //  End APMET    //
+        crono.end();
     }
 
     //  Resultados de pruebas //
